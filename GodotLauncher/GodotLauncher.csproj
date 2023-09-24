@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyGodotManagerViewModels\GodotLauncher.ViewModels.csproj" />
+    <ProjectReference Include="..\GodotLauncher.ViewModels\GodotLauncher.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
