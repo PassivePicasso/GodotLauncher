@@ -1,0 +1,19 @@
+﻿<Application x:Class="GodotLauncher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Dictionaries/ViewModels.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Dictionaries/Brushes.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Dictionaries/Scrollbars.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Dictionaries/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Dictionaries/ControlTemplates.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Dictionaries/DataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

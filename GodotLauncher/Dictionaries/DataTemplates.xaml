@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib" 
+                    xmlns:vm="clr-namespace:GodotLauncher.ViewModels;assembly=GodotLauncher.ViewModels"
+                    >
+
+    <ItemsPanelTemplate x:Key="HorizontalPanel">
+        <StackPanel Orientation="Horizontal"/>
+    </ItemsPanelTemplate>
+    <ItemsPanelTemplate x:Key="HorizontalWrapPanel">
+        <WrapPanel Orientation="Horizontal"/>
+    </ItemsPanelTemplate>
+
+    <DataTemplate x:Key="TagTemplate" DataType="{x:Type s:String}">
+        <Border CornerRadius="6" Padding="4,1" Margin="2,0" Background="{DynamicResource ActiveBackgroundBrush}">
+            <TextBlock Text="{Binding}" VerticalAlignment="Center" Padding="0" Margin="0,0,0,1" />
+        </Border>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ComboBoxGodotInstallTemplate" DataType="{x:Type vm:GodotInstallation}">
+        <TextBlock Text="{Binding Path=Name}" Foreground="{DynamicResource EditableForegroundBrush}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ProjectListItemTemplate" DataType="{x:Type vm:Project}">
+        <Border BorderBrush="{DynamicResource StandardBorderBrush}" BorderThickness="14,1,1,1" Margin="0,2,1,2"
+                Background="{DynamicResource EditableBackgroundBrush}">
+            <Grid HorizontalAlignment="Stretch" Margin="0,2">
+                <Grid.Resources>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource ResourceKey={x:Type TextBlock}}">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="Margin" Value="0,0,8,0" />
+                    </Style>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource ResourceKey={x:Type TextBox}}">
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="Margin" Value="0,0,8,0" />
+                        <Setter Property="Focusable" Value="False" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0">Name</TextBlock>
+                <TextBlock Grid.Row="2">Path</TextBlock>
+                <TextBlock Grid.Row="4">Features</TextBlock>
+                <TextBlock Grid.Row="6">Plugins</TextBlock>
+                <TextBlock Grid.Row="8">Editor</TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Name}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Path}" />
+
+                <ItemsControl Grid.Row="4" Grid.Column="1"
+                              ItemsSource="{Binding Path=FeatureTags}" 
+                              ItemTemplate="{DynamicResource TagTemplate}" 
+                              ItemsPanel="{DynamicResource HorizontalWrapPanel}"/>
+
+
+                <ItemsControl Grid.Row="6" Grid.Column="1"
+                              ItemsSource="{Binding Path=Plugins}" 
+                              ItemTemplate="{DynamicResource TagTemplate}" 
+                              ItemsPanel="{DynamicResource HorizontalWrapPanel}"/>
+
+                <ComboBox ItemsSource="{Binding Source={StaticResource MainViewModel}, Path=Data.Engines}"
+                          SelectedItem="{Binding LaunchInstallation}"
+                          Grid.Row="8" Grid.Column="1"
+                          Margin="0"
+                          ItemTemplate="{DynamicResource ComboBoxGodotInstallTemplate}"/>
+
+                <Button Grid.Row="0" Grid.RowSpan="15" Grid.Column="2" Margin="0,0,2,0" VerticalAlignment="Top"
+                        Content="Launch" Command="{Binding LaunchCommand}"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=EditableForegroundColor, Mode=TwoWay}"     x:Key="EditableForegroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=EditableBackgroundColor, Mode=TwoWay}"     x:Key="EditableBackgroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=EditableBorderColor, Mode=TwoWay}"         x:Key="EditableBorderColorPicker"        DataContext="{StaticResource LoadedTheme}"/>
+                                                                                                                          
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=EditableForegroundColor}"                  x:Key="EditableForegroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=EditableBackgroundColor}"                  x:Key="EditableBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=EditableBorderColor}"                      x:Key="EditableBorderBrush"              />
+                                                                                                                          
+                                                                                                                          
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=SelectionHighlightColor, Mode=TwoWay}"     x:Key="SelectionHighlightColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=SelectedBackgroundColor, Mode=TwoWay}"     x:Key="SelectedBackgroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=SelectedForegroundColor, Mode=TwoWay}"     x:Key="SelectedForegroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+                                                                                                                          
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=SelectionHighlightColor}"                  x:Key="SelectionHighlightBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=SelectedBackgroundColor}"                  x:Key="SelectedBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=SelectedForegroundColor}"                  x:Key="SelectedForegroundBrush"          />
+                                                                                                                          
+                                                                                                                          
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=StandardBackgroundColor, Mode=TwoWay}"     x:Key="StandardBackgroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=StandardForegroundColor, Mode=TwoWay}"     x:Key="StandardForegroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=StandardBorderColor, Mode=TwoWay}"         x:Key="StandardBorderColorPicker"        DataContext="{StaticResource LoadedTheme}"/>
+                                                                                                                          
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=StandardBackgroundColor}"                  x:Key="StandardBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=StandardForegroundColor}"                  x:Key="StandardForegroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=StandardBorderColor}"                      x:Key="StandardBorderBrush"              />
+                                                                                                                          
+                                                                                                                          
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=HoverBackgroundColor, Mode=TwoWay}"        x:Key="HoverBackgroundColorPicker"       DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=HoverForegroundColor, Mode=TwoWay}"        x:Key="HoverForegroundColorPicker"       DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=HoverBorderColor, Mode=TwoWay}"            x:Key="HoverBorderColorPicker"           DataContext="{StaticResource LoadedTheme}"/>
+                                                                                                                                                                  
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HoverBackgroundColor}"                     x:Key="HoverBackgroundBrush"             />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HoverForegroundColor}"                     x:Key="HoverForegroundBrush"             />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HoverBorderColor}"                         x:Key="HoverBorderBrush"                 />
+                                                                                                                          
+                                                                                                                          
+    <colorpicker:PortableColorPicker        SelectedColor="{Binding Path=ActiveBackgroundColor, Mode=TwoWay}"             x:Key="ActiveBackgroundColorPicker"      DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker        SelectedColor="{Binding Path=ActiveForegroundColor, Mode=TwoWay}"             x:Key="ActiveForegroundColorPicker"      DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker        SelectedColor="{Binding Path=ActiveBorderColor, Mode=TwoWay}"                 x:Key="ActiveBorderColorPicker"          DataContext="{StaticResource LoadedTheme}"/>
+                                                                                                                                                                   
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=ActiveBackgroundColor}"                    x:Key="ActiveBackgroundBrush"            />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=ActiveForegroundColor}"                    x:Key="ActiveForegroundBrush"            />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=ActiveBorderColor}"                        x:Key="ActiveBorderBrush"                />
+                                                                                                                          
+                                                                                                                          
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=DisabledForegroundColor, Mode=TwoWay}"     x:Key="DisabledForegroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=DisabledBackgroundColor, Mode=TwoWay}"     x:Key="DisabledBackgroundColorPicker"    DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=DisabledBorderColor, Mode=TwoWay}"         x:Key="DisabledBorderColorPicker"        DataContext="{StaticResource LoadedTheme}"/>
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=DisabledForegroundColor}"                  x:Key="DisabledForegroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=DisabledBackgroundColor}"                  x:Key="DisabledBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=DisabledBorderColor}"                      x:Key="DisabledBorderBrush"              />
+                                                                                                                          
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=GlyphColor, Mode=TwoWay}"                  x:Key="GlyphColorPicker"                 DataContext="{StaticResource LoadedTheme}"/>
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=GlyphColor}"                               x:Key="GlyphBrush"                       />
+                                                                                                                          
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=NormalColor, Mode=TwoWay}"                 x:Key="NormalColorPicker"                DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=NormalBorderColor, Mode=TwoWay}"           x:Key="NormalBorderColorPicker"          DataContext="{StaticResource LoadedTheme}"/>
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=NormalColor}"                              x:Key="NormalBrush"                      />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=NormalBorderColor}"                        x:Key="NormalBorderBrush"                />
+
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=HorizontalNormalColor, Mode=TwoWay}"       x:Key="HorizontalNormalColorPicker"       DataContext="{StaticResource LoadedTheme}"/>
+    <colorpicker:PortableColorPicker              SelectedColor="{Binding Path=HorizontalNormalBorderColor, Mode=TwoWay}" x:Key="HorizontalNormalBorderColorPicker" DataContext="{StaticResource LoadedTheme}"/>
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HorizontalNormalColor}"                    x:Key="HorizontalNormalBrush"             />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HorizontalNormalBorderColor}"              x:Key="HorizontalNormalBorderBrush"       />
+</ResourceDictionary>

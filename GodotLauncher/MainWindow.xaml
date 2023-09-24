@@ -1,0 +1,201 @@
+﻿<Window x:Class="GodotLauncher.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Godot Launcher" Height="600" Width="1000"
+        x:Name="Root"
+        Background="{DynamicResource StandardBackgroundBrush}"
+        DataContext="{Binding Source={StaticResource MainViewModel}}"
+        SnapsToDevicePixels="True"
+        
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ToggleButton x:Name="ThemeViewToggle" Grid.Column="1"
+                      Padding="0" Margin="1"
+                      VerticalAlignment="Top" HorizontalAlignment="Left"
+                      Panel.ZIndex="10000" Style="{StaticResource ExpansionToggleButtonStyle}"/>
+
+        <ScrollViewer Grid.RowSpan="2" Grid.Column="1" Margin="0,8,2,2" 
+                      Visibility="{Binding ElementName=ThemeViewToggle, Path=IsChecked, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+            <StackPanel Orientation="Vertical" >
+                <StackPanel.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Width" Value="32" />
+                        <Setter Property="Height" Value="32" />
+                    </Style>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource ResourceKey={x:Type TextBlock}}">
+                        <Setter Property="Width" Value="250" />
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </StackPanel.Resources>
+                <!--Editable-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Editable Foreground Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource EditableForegroundColorPicker}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Editable Background Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource EditableBackgroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Editable Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource EditableBorderColorPicker}" />
+                </StackPanel>
+                <!--Active-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Active Background Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource ActiveBackgroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Active Foreground Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource ActiveForegroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Active Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource ActiveBorderColorPicker}"/>
+                </StackPanel>
+                <!--Hover-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Hover Background Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource HoverBackgroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Hover Foreground Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource HoverForegroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Hover Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource HoverBorderColorPicker}"/>
+                </StackPanel>
+                <!--Standard-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Standard Background Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource StandardBackgroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Standard Foreground Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource StandardForegroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Standard Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource StandardBorderColorPicker}"/>
+                </StackPanel>
+                <!--Selection-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Selection Highlight Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource SelectionHighlightColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Selected Background Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource SelectedBackgroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Selected Foreground Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource SelectedForegroundColorPicker}"/>
+                </StackPanel>
+                <!--Disabled-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Disabled Background Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource DisabledBackgroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Disabled Foreground Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource DisabledForegroundColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Disabled Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource DisabledBorderColorPicker}"/>
+                </StackPanel>
+                <!--Glyph-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Glyph Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource GlyphColorPicker}"/>
+                </StackPanel>
+                <!--Normal-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Normal Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource NormalColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Normal Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource NormalBorderColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Horizontal Normal Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource HorizontalNormalColorPicker}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Horizontal Normal Border Color</TextBlock>
+                    <ContentPresenter Content="{StaticResource HorizontalNormalBorderColorPicker}"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid Background="Transparent" Grid.Row="0" Margin="5,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0,0,1,1" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,2,0" Padding="4,2" Text="Engines Root Path"/>
+                <TextBox Width="300" Height="20" FontSize="13" Text="{Binding Path=Data.EnginesRootDirectory}"/>
+                <Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=BrowseForEngineFolderCommand}">Browse</Button>
+                <Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ScanForEnginesCommand}">Scan</Button>
+                <Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ClearEnginesCommand}">Clear</Button>
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Path=Data.Engines}" AutoGenerateColumns="False"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" EditingElementStyle="{DynamicResource {x:Type TextBox}}"/>
+                    <DataGridTextColumn Header="Path" Binding="{Binding Path=Path}" EditingElementStyle="{DynamicResource {x:Type TextBox}}"/>
+                    <DataGridTextColumn Header="Arguments" Binding="{Binding Path=Arguments}" EditingElementStyle="{DynamicResource {x:Type TextBox}}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Launch" Padding="4,1" Command="{Binding Path=LaunchCommand}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Background="Transparent" Grid.Row="1" Margin="5,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="00.5*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0,0,1,0" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,2,0" Padding="4,2" Text="Projects Root Path"/>
+                <TextBox Width="300" Height="20" FontSize="13" Text="{Binding Path=Data.ProjectsRootDirectory}"/>
+                <Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=BrowseForProjectFolderCommand}">Browse</Button>
+                <Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ScanForProjectsCommand}">Scan</Button>
+                <Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ClearProjectsCommand}">Clear</Button>
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="1" Margin="0">
+                <ItemsControl ItemsSource="{Binding Path=Data.Projects}"
+                         Background="Transparent"
+                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                         ItemTemplate="{DynamicResource ProjectListItemTemplate}"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
