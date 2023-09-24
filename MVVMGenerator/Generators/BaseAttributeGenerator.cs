@@ -77,12 +77,12 @@ namespace MVVMGenerator.Generators
         private string GeneratePartialClass(INamedTypeSymbol classSymbol)
         {
             var namespaceName = classSymbol.ContainingNamespace.ToDisplayString();
-            var usings = new List<string>();
-            var interfaces = new List<string>();
-            var nestedClasses = new List<string>();
-            var iImpls = new List<string>();
-            var properties = new List<string>();
-            var fields = new List<string>();
+            List<string> usings/*    */= new();
+            List<string> interfaces/**/= new();
+            List<string> nestedClasses = new();
+            List<string> iImpls/*    */= new();
+            List<string> properties/**/= new();
+            List<string> fields/*    */= new();
 
             var symbols = classSymbol.GetMembers()
                 .Where(p => p.GetAttributes().Any(SymbolAttribute))
@@ -98,8 +98,8 @@ namespace MVVMGenerator.Generators
                 AddFields/*              */(fields,/*    */tSymbol);
                 AddProperties/*          */(properties,/**/tSymbol);
             }
-            var classUsing = $"using {classSymbol.ContainingNamespace};";
-            usings.RemoveAll(usng => usng.Contains(classUsing)); 
+            string classUsing = $"using {classSymbol.ContainingNamespace};";
+            usings.RemoveAll(usng => usng.Contains(classUsing));
             usings.Sort();
 
             string derivationSeparator = (interfaces.Any() ? " : " : string.Empty);
