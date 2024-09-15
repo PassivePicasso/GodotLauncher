@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:c="using:GodotLauncher.Converters">
+    <!-- Add Resources Here -->
+
+	<c:StringColorConverter x:Key="StringColorConverter"/>
+</ResourceDictionary>

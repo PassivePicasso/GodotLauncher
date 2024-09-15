@@ -1,15 +1,14 @@
-﻿using System.Windows;
-
-namespace GodotLauncher.View
+﻿namespace GodotLauncher.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : CommandingWindow
     {
-        public MainWindow()
+        public MainWindow() 
         {
             InitializeComponent();
         }
+
     }
 }

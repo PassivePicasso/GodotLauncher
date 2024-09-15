@@ -1,0 +1,71 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:v="using:GodotLauncher.Views"
+		>
+
+	<Design.PreviewWith>
+		<v:MainView/>
+	</Design.PreviewWith>
+
+	<Style Selector="ContentControl">
+		<Setter Property="Background" Value="{StaticResource NormalBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource NormalForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+	</Style>
+	<Style Selector="TabItem">
+		<Setter Property="Background" Value="{StaticResource NormalBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource NormalForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{StaticResource ActiveBackgroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource ActiveForegroundBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ActiveBorderBrush}"/>
+		</Style>
+	</Style>
+	<Style Selector="TabControl">
+		<Setter Property="Background" Value="{StaticResource NormalBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource NormalForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+	</Style>
+	<Style Selector="TextBlock">
+		<Setter Property="Foreground" Value="{StaticResource NormalForegroundBrush}"/>
+	</Style>
+	<Style Selector="TextBox">
+		<Setter Property="Background" Value="{StaticResource EditableBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource EditableForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource EditableBorderBrush}"/>
+		<Setter Property="Height" Value="25"/>
+	</Style>
+	<Style Selector="Button">
+		<Setter Property="Background" Value="{StaticResource NormalBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource NormalForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{StaticResource ActiveBackgroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource ActiveForegroundBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ActiveBorderBrush}"/>
+		</Style>
+	</Style>
+	<Style Selector="ScrollBar">
+		<Setter Property="Background" Value="{StaticResource NormalBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource NormalForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+
+		<Style Selector="^Button:pointerover">
+			<Setter Property="Background" Value="{StaticResource ActiveBackgroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource ActiveForegroundBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ActiveBorderBrush}"/>
+		</Style>
+		<Style Selector="^Button:disabled">
+			<Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}"/>
+		</Style>
+	</Style>
+	<Style Selector="Border">
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+		<Setter Property="Background" Value="{StaticResource NormalBackgroundBrush}"/>
+	</Style>
+    <!-- Add Styles Here -->
+</Styles>

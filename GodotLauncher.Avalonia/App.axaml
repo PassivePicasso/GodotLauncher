@@ -1,0 +1,71 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:GodotLauncher.ViewModels"
+			 xmlns:s="using:System"
+			 xmlns:local="using:GodotLauncher"
+			 xmlns:om="using:System.Collections.ObjectModel"
+			 xmlns:v="using:GodotLauncher.Views"
+             x:Class="GodotLauncher.App"
+             RequestedThemeVariant="Default"
+			 >
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="/Dictionaries/Brushes.axaml"/>
+				<ResourceInclude Source="/Dictionaries/ViewModels.axaml"/>
+				<ResourceInclude Source="/Dictionaries/Converters.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+	<Application.Styles>
+		<StyleInclude Source="/Dictionaries/Styles.axaml"/>
+		<SimpleTheme />
+	</Application.Styles>
+	<Application.DataTemplates>
+		<DataTemplate DataType="s:String">
+			<Border CornerRadius="6" Padding="4,1" Margin="2,0" Background="{DynamicResource ActiveBackgroundBrush}">
+				<TextBlock Text="{Binding}" VerticalAlignment="Center" Padding="0" Margin="0,0,0,1" />
+			</Border>
+		</DataTemplate>
+		<DataTemplate DataType="vm:GodotInstallation">
+			<TextBlock Text="{Binding Path=Name}" Foreground="{DynamicResource EditableForegroundBrush}"/>
+		</DataTemplate>
+		<DataTemplate DataType="vm:Project" >
+			<Border x:DataType="vm:Project" BorderThickness="14,1,1,1" Margin="0,2,1,2"
+					BorderBrush="{DynamicResource NormalBorderBrush}"
+					Background="{DynamicResource EditableBackgroundBrush}">
+				<Grid HorizontalAlignment="Stretch" Margin="0,2"
+					  ColumnDefinitions="60,*,70"
+					  RowDefinitions="Auto,2,Auto,2,Auto,2,Auto,2,Auto">
+					<TextBlock Grid.Row="0">Name</TextBlock>
+					<TextBlock Grid.Row="2">Path</TextBlock>
+					<TextBlock Grid.Row="4">Features</TextBlock>
+					<TextBlock Grid.Row="6">Plugins</TextBlock>
+					<TextBlock Grid.Row="8">Editor</TextBlock>
+					<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Name}" />
+					<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Path}" />
+
+					<ItemsControl Grid.Row="4" Grid.Column="1"
+								  ItemsSource="{Binding Path=FeatureTags}"
+								  ItemTemplate="{DynamicResource TagTemplate}"
+								  ItemsPanel="{DynamicResource HorizontalWrapPanel}"/>
+
+
+					<ItemsControl Grid.Row="6" Grid.Column="1"
+								  ItemsSource="{Binding Path=Plugins}"
+								  ItemTemplate="{DynamicResource TagTemplate}"
+								  ItemsPanel="{DynamicResource HorizontalWrapPanel}"/>
+
+					<ComboBox ItemsSource="{Binding DataType=vm:MainViewModel, Source={DynamicResource MainViewModel}, Path=Data.Engines}"
+							  SelectedItem="{Binding LaunchInstallation}"
+							  Grid.Row="8" Grid.Column="1"
+							  Margin="0"
+							  />
+
+					<Button Grid.Row="0" Grid.RowSpan="15" Grid.Column="2" Margin="0,0,2,0" VerticalAlignment="Top"
+							Content="Launch" Command="{Binding LaunchCommand}"/>
+				</Grid>
+			</Border>
+		</DataTemplate>
+	</Application.DataTemplates>
+</Application>

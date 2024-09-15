@@ -4,11 +4,15 @@
                     >
 
     <vm:Theme x:Key="LoadedTheme" />
-    
+
     <vm:DataViewModel x:Key="Data" />
-    
+
+
     <vm:MainViewModel x:Key="MainViewModel"
                       Theme="{StaticResource LoadedTheme}"
-                      Data="{StaticResource Data}"/>
+                      Data="{StaticResource Data}">
+        <vm:GithubSource Owner="godotengine" RepositoryName="godot"/>
+        <vm:GithubSource Owner="godotengine" RepositoryName="godot-builds"/>
+    </vm:MainViewModel>
 
 </ResourceDictionary>

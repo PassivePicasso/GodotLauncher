@@ -1,0 +1,29 @@
+<ResourceDictionary 
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:GodotLauncher.ViewModels"
+	xmlns:om="using:System.Collections.ObjectModel"
+    xmlns:views="clr-namespace:GodotLauncher.Views"
+	x:DataType="vm:MainViewModel"
+	>
+	<vm:Theme x:Key="LoadedTheme"/>
+	<vm:DataViewModel x:Key="Data" />
+
+	<vm:MainViewModel x:Key="MainViewModel"
+					  Theme="{StaticResource LoadedTheme}"
+					  Data="{StaticResource Data}"
+					  >
+		<vm:MainViewModel.GithubSources>
+			<om:ObservableCollection x:TypeArguments="vm:GithubSource">
+				<vm:GithubSource Owner="godot" RepositoryName="godot"/>
+				<vm:GithubSource Owner="godot" RepositoryName="godot-builds"/>
+			</om:ObservableCollection>
+		</vm:MainViewModel.GithubSources>
+	</vm:MainViewModel>
+
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<views:MainView Width="750" Height="400"/>
+		</Border>
+	</Design.PreviewWith>
+</ResourceDictionary>

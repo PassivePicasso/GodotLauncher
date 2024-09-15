@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:vm="using:GodotLauncher.ViewModels"
+					xmlns:om="using:System.Collections.ObjectModel"
+					xmlns:v="using:GodotLauncher.Views"
+					>
+	<SolidColorBrush x:Key="NormalBackgroundBrush"  />
+	<SolidColorBrush x:Key="NormalForegroundBrush"  />
+	<SolidColorBrush x:Key="NormalBorderBrush"      />
+
+	<SolidColorBrush x:Key="EditableForegroundBrush"/>
+	<SolidColorBrush x:Key="EditableBackgroundBrush"/>
+	<SolidColorBrush x:Key="EditableBorderBrush"    />
+
+	<SolidColorBrush x:Key="HoverBackgroundBrush"   />
+	<SolidColorBrush x:Key="HoverForegroundBrush"   />
+	<SolidColorBrush x:Key="HoverBorderBrush"       />
+
+	<SolidColorBrush x:Key="ActiveBackgroundBrush"  />
+	<SolidColorBrush x:Key="ActiveForegroundBrush"  />
+	<SolidColorBrush x:Key="ActiveBorderBrush"      />
+
+	<SolidColorBrush x:Key="DisabledForegroundBrush"/>
+	<SolidColorBrush x:Key="DisabledBackgroundBrush"/>
+	<SolidColorBrush x:Key="DisabledBorderBrush"    />
+
+	<SolidColorBrush x:Key="SelectionHighlightBrush"/>
+	<SolidColorBrush x:Key="SelectedBackgroundBrush"/>
+	<SolidColorBrush x:Key="SelectedForegroundBrush"/>
+
+	<SolidColorBrush x:Key="GlyphBrush"             />
+
+	<Design.PreviewWith>
+		<v:ThemeControl/>
+	</Design.PreviewWith>
+</ResourceDictionary>

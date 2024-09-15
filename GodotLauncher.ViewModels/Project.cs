@@ -25,36 +25,43 @@ namespace GodotLauncher.ViewModels
             var text = File.ReadAllLines(Path);
             var projectNameField = text.First(projectNameRegex.IsMatch);
             var nameMatch = projectNameRegex.Match(projectNameField);
-            var projectName = nameMatch.Groups[1].Value;
-
-            var projectFeatureField = text.First(projectFeaturesRegex.IsMatch);
-            var featureMatch = projectFeaturesRegex.Match(projectFeatureField);
-            var projectFeatures = featureMatch.Groups["features"].Value;
-            var tags = projectFeatures
-                .Split(",").
-                Select(s => s.Trim(' ', '\"', '"'));
-
-            var projectPluginField = text.First(projectPluginsRegex.IsMatch);
-            var pluginMatch = projectPluginsRegex.Match(projectPluginField);
-            var projectPlugins = pluginMatch.Groups["plugins"].Value;
-            var plugins = projectPlugins
-                .Split(",")
-                .Select(s => s.Trim(' ', '\"', '"'))
-                .Select(s =>
-                        s.Replace("res://addons/", "")
-                         .Replace("/plugin.cfg", "")
-                         .Replace("_", " ")
-                         .Replace("-", " ")
-                       )
-                .Select(s => $"{s.Substring(0, 1).ToUpperInvariant()}{s.Substring(1)}")
-                .Select(s => Regex.Replace(s, @"([a-z])([A-Z])", "$1 $2"))
-                .Select(s => Regex.Replace(s, @"(?<=\s)\w", m => m.Value.ToUpper()))
-                ;
-
-            Name = projectName;
-            FeatureTags = new ObservableCollection<string>(tags);
-            Plugins = new ObservableCollection<string>(plugins);
             
+            Name = nameMatch.Groups[1].Value;
+
+            var projectFeatureField = text.FirstOrDefault(projectFeaturesRegex.IsMatch);
+            if (!string.IsNullOrEmpty(projectFeatureField))
+            {
+                var featureMatch = projectFeaturesRegex.Match(projectFeatureField);
+                var projectFeatures = featureMatch.Groups["features"].Value;
+                var tags = projectFeatures
+                    .Split(",").
+                    Select(s => s.Trim(' ', '\"', '"'));
+                FeatureTags = new ObservableCollection<string>(tags);
+            }
+            else
+                FeatureTags = new ObservableCollection<string>();
+
+            var projectPluginField = text.FirstOrDefault(projectPluginsRegex.IsMatch);
+            if (!string.IsNullOrEmpty(projectPluginField))
+            {
+                var pluginMatch = projectPluginsRegex.Match(projectPluginField);
+                var projectPlugins = pluginMatch.Groups["plugins"].Value;
+                var plugins = projectPlugins
+                    .Split(",")
+                    .Select(s => s.Trim(' ', '\"', '"'))
+                    .Select(s =>
+                            s.Replace("res://addons/", "")
+                             .Replace("/plugin.cfg", "")
+                             .Replace("_", " ")
+                             .Replace("-", " ")
+                           )
+                    .Select(s => $"{s.Substring(0, 1).ToUpperInvariant()}{s.Substring(1)}")
+                    .Select(s => Regex.Replace(s, @"([a-z])([A-Z])", "$1 $2"))
+                    .Select(s => Regex.Replace(s, @"(?<=\s)\w", m => m.Value.ToUpper()))
+                    ;
+                Plugins = new ObservableCollection<string>(plugins);
+            }
+            else Plugins = new ObservableCollection<string>();
         }
 
         [AutoCommand]

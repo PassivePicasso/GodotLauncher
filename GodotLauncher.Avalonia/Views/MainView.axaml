@@ -1,0 +1,124 @@
+<l:CommandingControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:GodotLauncher.ViewModels"
+			 xmlns:l="using:GodotLauncher.Views"
+			 xmlns:om="using:System.Collections.ObjectModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
+             x:Class="GodotLauncher.Views.MainView"
+			 OnLoadedCommand="{Binding Path=LoadCommand}"
+		     OnUnloadedCommand="{Binding Path=SaveCommand}"
+			 x:DataType="vm:MainViewModel"
+			 DataContext="{StaticResource MainViewModel}"
+			 >
+	<l:CommandingControl.Styles>
+	</l:CommandingControl.Styles>
+	<Grid Background="Transparent">
+		<Border x:Name="TabBorder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="1,0,0,0"
+				ZIndex="100"
+				Margin="115,0,0,0"
+				Background="Transparent" IsHitTestVisible="False"/>
+		<TabControl TabStripPlacement="Left" Margin="0" Padding="5" Classes="normal" SelectedIndex="4" >
+			<TabItem Header="Engines" Width="{Binding ElementName=TabBorder, Path=Margin.Left}">
+				<Grid Background="Transparent" Grid.Row="0" Margin="5" RowDefinitions="24,*">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock VerticalAlignment="Center" Margin="0,0,2,0" Padding="4,2" Text="Engines Root Path"/>
+						<TextBox Width="300" FontSize="13" Text="{Binding Path=Data.EnginesRootDirectory}"/>
+						<Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=BrowseForEngineFolderCommand}">Browse</Button>
+						<Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ScanForEnginesCommand}">Scan</Button>
+						<Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ClearEnginesCommand}">Clear</Button>
+					</StackPanel>
+
+					<DataGrid Grid.Row="1" ItemsSource="{Binding Path=Data.Engines}" AutoGenerateColumns="False"
+                      >
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="Name"      Binding="{Binding Path=Name}" />
+							<DataGridTextColumn Header="Path"      Binding="{Binding Path=Path}" />
+							<DataGridTextColumn Header="Arguments" Binding="{Binding Path=Arguments}" />
+							<DataGridTemplateColumn>
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<Button Content="Launch" Padding="4,1" Command="{Binding Path=LaunchCommand}"/>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+
+			<TabItem Header="Projects" Width="{Binding ElementName=TabBorder, Path=Margin.Left}">
+				<Grid Background="Transparent" Margin="5,5,0,0" RowDefinitions="24,0.5*">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock VerticalAlignment="Center" Margin="0,0,2,0" Padding="4,2" Text="Projects Root Path"/>
+						<TextBox Width="300" FontSize="13" Text="{Binding Path=Data.ProjectsRootDirectory}"/>
+						<Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=BrowseForProjectFolderCommand}">Browse</Button>
+						<Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ScanForProjectsCommand}">Scan</Button>
+						<Button Height="20" Margin="4,0,2,1" Padding="8,0" Command="{Binding Path=ClearProjectsCommand}">Clear</Button>
+					</StackPanel>
+
+					<ScrollViewer Grid.Row="1" Margin="0">
+						<ItemsControl ItemsSource="{Binding Path=Data.Projects}"
+									 Background="Transparent"
+									 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+								 />
+					</ScrollViewer>
+				</Grid>
+			</TabItem>
+
+			<TabItem Header="Install" Width="{Binding ElementName=TabBorder, Path=Margin.Left}">
+				<Grid>
+					<TabControl x:Name="GithubSourcesControl" ItemsSource="{Binding Path=GithubSources}" Margin="0,20,0,0" >
+						<TabControl.ItemTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<TextBlock Text="{Binding Path=Owner}" />
+									<TextBlock Text="{Binding Path=RepositoryName}" />
+								</StackPanel>
+							</DataTemplate>
+						</TabControl.ItemTemplate>
+					</TabControl>
+
+					<Border Width="500" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="1">
+						<WrapPanel DataContext="{Binding #GithubSourcesControl.SelectedItem}"
+								   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+								   x:DataType="vm:GithubSource">
+							<TextBlock Margin="4,1" Text="{Binding Path=Repository.ApiInfo.Limit,       StringFormat={}Rate Limit(Hour) {0}}"                />
+							<TextBlock Margin="4,1" Text="{Binding Path=Repository.ApiInfo.Remaining,   StringFormat={}Limit Remaining(Hour) {0}}"       />
+							<TextBlock Margin="4,1" Text="{Binding Path=Repository.ApiInfo.ResetTime,   StringFormat={}Reset Time {0:hh:mm tt}}"         />
+							<TextBlock Margin="4,1" Text="{Binding Path=Repository.ApiInfo.LastRequest, StringFormat={}Last Request Time {0:hh:mm tt}}"/>
+						</WrapPanel>
+					</Border>
+				</Grid>
+			</TabItem>
+
+			<TabItem Header="Plugins" Width="{Binding ElementName=TabBorder, Path=Margin.Left}">
+
+			</TabItem>
+
+			<TabItem Header="Settings" Width="{Binding ElementName=TabBorder, Path=Margin.Left}">
+				<Border x:Name="SettingBorder" Grid.Column="1" BorderBrush="{DynamicResource NormalBorderBrush}"
+						BorderThickness="1,0,0,0" >
+					<Grid >
+						<TextBlock Text="Theme" Classes="h1"
+						   HorizontalAlignment="Right" VerticalAlignment="Top"
+						   Margin="0,0,100,0"/>
+
+						<Separator HorizontalAlignment="Stretch" VerticalAlignment="Top"
+						   Margin="0,0,0,0"/>
+
+						<ScrollViewer MaxHeight="{Binding Path=$parent.Bounds.Height}">
+							<l:ThemeControl />
+						</ScrollViewer>
+
+						<WrapPanel ItemHeight="50" ItemWidth="200">
+							<TextBox Text="InputText" Width="200" Margin="15" />
+							<TextBox Text="InputText"  Width="100" Margin="15" IsReadOnly="True"/>
+						</WrapPanel>
+					</Grid>
+				</Border>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</l:CommandingControl>

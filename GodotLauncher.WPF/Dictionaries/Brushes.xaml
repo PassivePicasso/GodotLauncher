@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=EditableForegroundColor}"                  x:Key="EditableForegroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=EditableBackgroundColor}"                  x:Key="EditableBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=EditableBorderColor}"                      x:Key="EditableBorderBrush"              />
+
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=SelectionHighlightColor}"                  x:Key="SelectionHighlightBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=SelectedBackgroundColor}"                  x:Key="SelectedBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=SelectedForegroundColor}"                  x:Key="SelectedForegroundBrush"          />
+
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=NormalBackgroundColor}"                    x:Key="NormalBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=NormalForegroundColor}"                    x:Key="NormalForegroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=NormalBorderColor}"                        x:Key="NormalBorderBrush"              />
+
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HoverBackgroundColor}"                     x:Key="HoverBackgroundBrush"             />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HoverForegroundColor}"                     x:Key="HoverForegroundBrush"             />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=HoverBorderColor}"                         x:Key="HoverBorderBrush"                 />
+
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=ActiveBackgroundColor}"                    x:Key="ActiveBackgroundBrush"            />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=ActiveForegroundColor}"                    x:Key="ActiveForegroundBrush"            />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=ActiveBorderColor}"                        x:Key="ActiveBorderBrush"                />
+
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=DisabledForegroundColor}"                  x:Key="DisabledForegroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=DisabledBackgroundColor}"                  x:Key="DisabledBackgroundBrush"          />
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=DisabledBorderColor}"                      x:Key="DisabledBorderBrush"              />
+
+    <SolidColorBrush Color="{Binding Source={StaticResource LoadedTheme}, Path=GlyphColor}"                               x:Key="GlyphBrush"                       />
+</ResourceDictionary>

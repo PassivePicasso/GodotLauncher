@@ -1,37 +1,93 @@
+using GodotLauncher.ViewModels.Github;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using MVVMGenerator.Attributes;
+using SharpCompress.Archives;
+using SharpCompress.Archives.Zip;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Net.Http;
+using System.Windows.Markup;
 
 namespace GodotLauncher.ViewModels
 {
-    public partial class MainViewModel
+    [ContentProperty(nameof(GithubSources))]
+    public partial class MainViewModel : IAddChild
     {
-        [AutoNotify] DataViewModel? data;
-        [AutoNotify] Theme? theme;
+        [AutoNotify] DataViewModel data;
+        [AutoNotify] Theme theme;
+        [AutoNotify] ObservableCollection<GithubSource> githubSources;
+        [AutoNotify] string personalAccessToken = "Test";
 
+        Dictionary<ReleaseAssetViewModel, string> downloadLocations = new Dictionary<ReleaseAssetViewModel, string>();
         public MainViewModel()
         {
-            PropertyChanged += MainViewModel_PropertyChanged;
+            githubSources = new ObservableCollection<GithubSource>();
         }
 
-        private void MainViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case nameof(Data):
-                    Data?.Load();
-                    break;
 
-                case nameof(Theme):
-                    Theme?.Load();
-                    break;
+        [AutoCommand]
+        public void Load()
+        {
+            Data.Load();
+            Theme.Load();
+            if (GithubSources == null) return;
+            foreach (var source in GithubSources)
+                source.Load();
+        }
+
+        [AutoCommand]
+        public void Save()
+        {
+            Data.Save();
+            Theme.Save();
+            foreach (var source in GithubSources)
+                source.Save();
+        }
+
+        [AutoCommand]
+        public void LoadGithubSources()
+        {
+            foreach (var source in GithubSources)
+                source.LoadRepository();
+        }
+
+        [AutoCommand]
+        public async void Download(ReleaseAssetViewModel asset)
+        {
+            using var dialog = new CommonSaveFileDialog
+            {
+                AddToMostRecentlyUsedList = true,
+                RestoreDirectory = true,
+                DefaultFileName = asset.Name,
+            };
+            dialog.Filters.Add(new CommonFileDialogFilter("Zip", ".zip"));
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                var fileName = dialog.FileName;
+                downloadLocations[asset] = fileName;
+                var downloadUrl = asset.DownloadUrl;
+                using var client = new HttpClient();
+                using var message = new HttpRequestMessage(HttpMethod.Get, new Uri(downloadUrl));
+                using var response = await client.SendAsync(message);
+                using var responseStream = response.Content.ReadAsStream();
+                asset.Release.IsDownloading = true;
+                var bytes = await response.Content.ReadAsByteArrayAsync();
+                asset.Release.IsDownloading = false;
+                File.WriteAllBytes(fileName, bytes);
             }
         }
 
-        public void Save()
+        [AutoCommand]
+        public void Unpack(ReleaseAssetViewModel asset)
         {
-            Data?.Save();
-            Theme?.Save();
+            if (string.IsNullOrEmpty(Data.EnginesRootDirectory)) return;
+
+            var fileName = downloadLocations[asset];
+            var isZip = ZipArchive.IsZipFile(fileName);
+            if (!isZip) return;
+            var zipFile = ZipArchive.Open(fileName);
+            var destination = Path.Combine(Data.EnginesRootDirectory, Path.GetFileNameWithoutExtension(fileName));
+            zipFile.ExtractToDirectory(destination);
         }
 
         [AutoCommand]
@@ -67,7 +123,7 @@ namespace GodotLauncher.ViewModels
         [AutoCommand]
         public void ScanForProjects()
         {
-            if (string.IsNullOrEmpty(Data.ProjectsRootDirectory)) return;
+            if (string.IsNullOrEmpty(Data?.ProjectsRootDirectory)) return;
             if (!Directory.Exists(Data.ProjectsRootDirectory)) return;
             var godotProjectFiles = Directory.EnumerateFiles(Data.ProjectsRootDirectory, "project.godot", SearchOption.AllDirectories);
             foreach (string projectFile in godotProjectFiles)
@@ -105,6 +161,16 @@ namespace GodotLauncher.ViewModels
                 if (Data.Engines.Any(inst => inst.Path == executable)) continue;
                 Data.Engines.Add(new GodotInstallation(executable));
             }
+        }
+
+        public void AddChild(object value)
+        {
+            if (value is GithubSource githubSource && GithubSources != null)
+                GithubSources.Add(githubSource);
+        }
+
+        public void AddText(string text)
+        {
         }
     }
 }

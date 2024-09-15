@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:GodotLauncher.ViewModels"
+			 xmlns:c="using:GodotLauncher.Converters"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
+             x:Class="GodotLauncher.Views.ThemeControl">
+	<UserControl.Styles>
+		<StyleInclude Source="avares://Avalonia.Controls.ColorPicker/Themes/Fluent/Fluent.xaml" />
+	</UserControl.Styles>
+	<StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="230"
+                Margin="8,28,2,2"
+				>
+
+		<TextBlock>Normal</TextBlock>
+		<ColorPicker ToolTip.Tip="Background" Color="{Binding Source={StaticResource NormalBackgroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Foreground" Color="{Binding Source={StaticResource NormalForegroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Border"     Color="{Binding Source={StaticResource NormalBorderBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<TextBlock>Interactable</TextBlock>
+		<ColorPicker ToolTip.Tip="Background" Color="{Binding Source={StaticResource EditableBackgroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Foreground" Color="{Binding Source={StaticResource EditableForegroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Border"     Color="{Binding Source={StaticResource EditableBorderBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<TextBlock>Hover</TextBlock>
+		<ColorPicker ToolTip.Tip="Background" Color="{Binding Source={StaticResource HoverBackgroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Foreground" Color="{Binding Source={StaticResource HoverForegroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Border"     Color="{Binding Source={StaticResource HoverBorderBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<TextBlock>Active</TextBlock>
+		<ColorPicker ToolTip.Tip="Background" Color="{Binding Source={StaticResource ActiveBackgroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Foreground" Color="{Binding Source={StaticResource ActiveForegroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Border"     Color="{Binding Source={StaticResource ActiveBorderBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<TextBlock>Disable</TextBlock>
+		<ColorPicker ToolTip.Tip="Background" Color="{Binding Source={StaticResource DisabledBackgroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Foreground" Color="{Binding Source={StaticResource DisabledForegroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Border"     Color="{Binding Source={StaticResource DisabledBorderBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<TextBlock>Selection</TextBlock>
+		<ColorPicker ToolTip.Tip="Background" Color="{Binding Source={StaticResource SelectedBackgroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Foreground" Color="{Binding Source={StaticResource SelectedForegroundBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+		<ColorPicker ToolTip.Tip="Highlight"  Color="{Binding Source={StaticResource SelectionHighlightBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<TextBlock>Glyph</TextBlock>
+		<ColorPicker ToolTip.Tip="Glyph" HsvColor="{Binding Source={StaticResource GlyphBrush}, Mode=TwoWay, Path=(SolidColorBrush).Color}"/>
+
+		<Rectangle Width="32" Height="32" Fill="Transparent" Stroke="Transparent" Margin="4,0"/>
+
+	</StackPanel>
+</UserControl>

@@ -16,9 +16,9 @@ namespace GodotLauncher.ViewModels
         [AutoNotify] string selectedBackgroundColor = "#888";
         [AutoNotify] string selectedForegroundColor = "#FFF";
 
-        [AutoNotify] string standardBackgroundColor = "#222";
-        [AutoNotify] string standardForegroundColor = "#CCC";
-        [AutoNotify] string standardBorderColor = "#333";
+        [AutoNotify] string normalBackgroundColor = "#222";
+        [AutoNotify] string normalForegroundColor = "#ccc";
+        [AutoNotify] string normalBorderColor = "#333";
 
         [AutoNotify] string hoverBackgroundColor = "#666";
         [AutoNotify] string hoverForegroundColor = "#666";
@@ -34,18 +34,9 @@ namespace GodotLauncher.ViewModels
 
         [AutoNotify] string glyphColor = "#444";
 
-        [AutoNotify] string normalColor = "#c8c8c8";
-        [AutoNotify] string normalBorderColor = "#888";
-        [AutoNotify] string horizontalNormalColor = "#c8c8c8";
-        [AutoNotify] string horizontalNormalBorderColor = "#888";
-
         [AutoNotify, JsonIgnore] string sourcePath = ThemePath;
 
-        public void Load()
-        {
-            SerializationUtilities.Populate(SourcePath, this);
-        }
-
+        public void Load() => SerializationUtilities.Populate(SourcePath, this);
         public void Save() => SerializationUtilities.Save(SourcePath, this);
     }
 }

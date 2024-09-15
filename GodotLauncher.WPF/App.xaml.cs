@@ -8,10 +8,10 @@ namespace GodotLauncher
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnExit(ExitEventArgs e)
-        {
-            var mainViewModel = Resources["MainViewModel"] as MainViewModel;
-            mainViewModel?.Save();
-        }
+        //protected override void OnExit(ExitEventArgs e)
+        //{
+        //    var mainViewModel = Resources["MainViewModel"] as MainViewModel;
+        //    mainViewModel?.Save();
+        //}
     }
 }
