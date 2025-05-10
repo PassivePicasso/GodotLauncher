@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GodotLauncher.Avalonia", "G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GodotLauncher.ViewModels", "GodotLauncher.ViewModels\GodotLauncher.ViewModels.csproj", "{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM.Generator", "..\MVVMGenerator\MVVMGenerator\MVVM.Generator.csproj", "{DA5C06C0-ADA7-4D60-9EC6-AF6FE0F8B5EE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,18 +24,14 @@ Global
 		{D40BA0DB-F3A2-4592-A2A9-4DB7658316C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40BA0DB-F3A2-4592-A2A9-4DB7658316C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40BA0DB-F3A2-4592-A2A9-4DB7658316C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA5C06C0-ADA7-4D60-9EC6-AF6FE0F8B5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA5C06C0-ADA7-4D60-9EC6-AF6FE0F8B5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA5C06C0-ADA7-4D60-9EC6-AF6FE0F8B5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA5C06C0-ADA7-4D60-9EC6-AF6FE0F8B5EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{772AB748-8C37-4E74-86BD-BD9224207BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{772AB748-8C37-4E74-86BD-BD9224207BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772AB748-8C37-4E74-86BD-BD9224207BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772AB748-8C37-4E74-86BD-BD9224207BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262E17BD-E42B-4BC7-A1BE-2A4094E15CF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

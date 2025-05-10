@@ -1,4 +1,4 @@
-﻿using MVVMGenerator.Attributes;
+﻿using MVVM.Generator.Attributes;
 using System.Diagnostics;
 
 namespace GodotLauncher.ViewModels

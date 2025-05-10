@@ -3,7 +3,7 @@
 #pragma warning disable IDE0044 // Add readonly modifier
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using MVVMGenerator.Attributes;
+using MVVM.Generator.Attributes;
 using System.Windows.Input;
 
 namespace GodotLauncher.Views

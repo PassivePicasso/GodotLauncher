@@ -1,4 +1,4 @@
-﻿using MVVMGenerator.Attributes;
+﻿using MVVM.Generator.Attributes;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;

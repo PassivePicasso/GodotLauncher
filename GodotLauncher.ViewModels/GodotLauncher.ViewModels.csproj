@@ -8,13 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Octokit" Version="8.0.0" />
-    <PackageReference Include="SharpCompress" Version="0.34.0" />
+	  <PackageReference Include="MVVM.Generator" Version="4.7.7" />
+	  <PackageReference Include="Octokit" Version="14.0.0" />
+    <PackageReference Include="SharpCompress" Version="0.39.0" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\MVVMGenerator\MVVMGenerator\MVVM.Generator.csproj" OutputItemType="analyzer" />
   </ItemGroup>
 
 </Project>

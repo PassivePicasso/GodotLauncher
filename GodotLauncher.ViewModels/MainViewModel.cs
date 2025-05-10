@@ -1,6 +1,6 @@
 using GodotLauncher.ViewModels.Github;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using MVVMGenerator.Attributes;
+using MVVM.Generator.Attributes;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Zip;
 using System.Collections.ObjectModel;

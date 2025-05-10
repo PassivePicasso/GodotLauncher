@@ -1,4 +1,4 @@
-﻿using MVVMGenerator.Attributes;
+﻿using MVVM.Generator.Attributes;
 
 namespace GodotLauncher.ViewModels.Github
 {

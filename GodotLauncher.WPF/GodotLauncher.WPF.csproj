@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="PixiEditor.ColorPicker" Version="3.4.1" />
+		<PackageReference Include="PixiEditor.ColorPicker" Version="3.4.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -19,7 +19,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\MVVMGenerator\MVVMGenerator\MVVM.Generator.csproj" OutputItemType="analyzer" />
 		<ProjectReference Include="..\GodotLauncher.ViewModels\GodotLauncher.ViewModels.csproj" />
 	</ItemGroup>
 </Project>
