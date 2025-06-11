@@ -8,6 +8,11 @@ namespace GodotLauncher.ViewModels
         [AutoNotify] string? path;
         [AutoNotify] string? name;
         [AutoNotify] string? arguments;
+
+        public GodotInstallation()
+        {
+        }
+
         public GodotInstallation(string path)
         {
             Path = path;
@@ -17,8 +22,8 @@ namespace GodotLauncher.ViewModels
         [AutoCommand]
         public void Launch()
         {
-            if(Path == null) return; 
-            
+            if (Path == null) return;
+
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = Path,

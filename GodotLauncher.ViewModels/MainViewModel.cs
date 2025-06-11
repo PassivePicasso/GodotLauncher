@@ -21,13 +21,20 @@ namespace GodotLauncher.ViewModels
         Dictionary<ReleaseAssetViewModel, string> downloadLocations = new Dictionary<ReleaseAssetViewModel, string>();
         public MainViewModel()
         {
+            data = new DataViewModel();
+            theme = new Theme();
             githubSources = new ObservableCollection<GithubSource>();
         }
-
 
         [AutoCommand]
         public void Load()
         {
+            // Initialize if null
+            if (Data == null)
+                Data = new DataViewModel();
+            if (Theme == null)
+                Theme = new Theme();
+
             Data.Load();
             Theme.Load();
             if (GithubSources == null) return;
@@ -38,10 +45,13 @@ namespace GodotLauncher.ViewModels
         [AutoCommand]
         public void Save()
         {
-            Data.Save();
-            Theme.Save();
-            foreach (var source in GithubSources)
-                source.Save();
+            Data?.Save();
+            Theme?.Save();
+            if (GithubSources != null)
+            {
+                foreach (var source in GithubSources)
+                    source.Save();
+            }
         }
 
         [AutoCommand]
@@ -88,6 +98,9 @@ namespace GodotLauncher.ViewModels
             var zipFile = ZipArchive.Open(fileName);
             var destination = Path.Combine(Data.EnginesRootDirectory, Path.GetFileNameWithoutExtension(fileName));
             zipFile.ExtractToDirectory(destination);
+
+            // After unpacking, scan for new engines
+            ScanForEngines();
         }
 
         [AutoCommand]
@@ -102,8 +115,10 @@ namespace GodotLauncher.ViewModels
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 Data.ProjectsRootDirectory = dialog.FileName;
+                Save();
             }
         }
+
 
         [AutoCommand]
         public void BrowseForEngineFolder()
@@ -117,6 +132,7 @@ namespace GodotLauncher.ViewModels
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 Data.EnginesRootDirectory = dialog.FileName;
+                Save();
             }
         }
 
@@ -141,13 +157,22 @@ namespace GodotLauncher.ViewModels
 
                 Data.Projects.Add(project);
             }
+            Save(); // Auto-save after scanning
         }
 
         [AutoCommand]
-        public void ClearProjects() => Data.Projects.Clear();
+        public void ClearProjects()
+        {
+            Data.Projects.Clear();
+            Save(); // Auto-save after clearing
+        }
 
         [AutoCommand]
-        public void ClearEngines() => Data.Engines.Clear();
+        public void ClearEngines()
+        {
+            Data.Engines.Clear();
+            Save(); // Auto-save after clearing
+        }
 
         [AutoCommand]
         public void ScanForEngines()
@@ -161,6 +186,7 @@ namespace GodotLauncher.ViewModels
                 if (Data.Engines.Any(inst => inst.Path == executable)) continue;
                 Data.Engines.Add(new GodotInstallation(executable));
             }
+            Save(); // Auto-save after scanning
         }
 
         public void AddChild(object value)

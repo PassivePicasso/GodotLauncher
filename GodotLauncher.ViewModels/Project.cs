@@ -5,8 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace GodotLauncher.ViewModels
-{
-    public partial class Project
+{    public partial class Project
     {
         [AutoNotify] GodotInstallation? launchInstallation;
         [AutoNotify] string? path;
@@ -17,6 +16,12 @@ namespace GodotLauncher.ViewModels
         Regex projectNameRegex = NameRegex();
         Regex projectFeaturesRegex = FeaturesRegex();
         Regex projectPluginsRegex = PluginsRegex();
+
+        public Project()
+        {
+            FeatureTags = new ObservableCollection<string>();
+            Plugins = new ObservableCollection<string>();
+        }
 
         [AutoCommand]
         public void Load()
